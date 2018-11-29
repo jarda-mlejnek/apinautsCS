@@ -5,11 +5,6 @@ import { CONFIG } from './config'
 export default class AuthorizationWrapper extends Component {
 
     state = {
-        user: {
-            username: 'sadkj',
-            role: 'loggedUser'
-        },
-        token: null,
         isLoggedIn: false
     }
 
@@ -18,9 +13,10 @@ export default class AuthorizationWrapper extends Component {
         const token = sessionStorage.getItem(CONFIG.STORAGE.TOKEN)
 
         if(token) {
-            this.setState({'isLoggedIn': true})
-        } else {  // odstranit
-            sessionStorage.setItem(CONFIG.STORAGE.TOKEN, "token") 
+            this.setState({ isLoggedIn: true})
+        } else { 
+            sessionStorage.setItem(CONFIG.STORAGE.TOKEN, "token")
+            this.setState({ isLoggedIn: true}) // odstranit 
         }
     }
 

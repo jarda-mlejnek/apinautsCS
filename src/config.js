@@ -8,7 +8,7 @@ export const CONFIG = {
         WELCOME: [
             {
                 label: 'LOGIN',
-                link: 'aaa'
+                link: '/app/home'
             }
         ],
         APP: [

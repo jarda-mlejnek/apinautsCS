@@ -1,15 +1,15 @@
 import { 
-    SOME_ACTION  
+    BRANCH_DETAIL_LOADED  
 } from '../actions/actionTypes'
 
-export function appReducer(state = {
-    someState: false
+export function AppReducer(state = {
+    branchDetailLoaded: false
 }, action) {
 
     switch(action.type) {
 
-        case SOME_ACTION:
-            return {...state}
+        case BRANCH_DETAIL_LOADED:
+            return {...state, branchDetailLoaded: action.isLoaded}
 
         default: 
             return state

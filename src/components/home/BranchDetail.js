@@ -1,15 +1,10 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { SomeService } from '../../services/SomeService'
+import React from 'react'
 
-export default class BranchDetail extends Component {
+export default function BranchDetail(props) {
     
-    render() {
-
-        return (
-            <div className="hm">
-                {this.props.branch.name}
-            </div>
-        )     
-    }
+    return (
+        <div className="branch-detail">
+           Current branch: {props.branch.name}
+        </div>
+    )   
 }

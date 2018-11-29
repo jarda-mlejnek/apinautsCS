@@ -23,7 +23,7 @@ export default class Form extends Component {
         let isValid = true
         
         const EMPTY_MESSAGE = ''
-        const ERROR_MESSAGE = 'You have failed!'
+        const ERROR_MESSAGE = 'Invalid / required data'
         const ERROR_DOM_SELECTOR = '.error-message'
 
         for(let elem = 0; elem < this.formEl.length; elem++) {

@@ -2,10 +2,10 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { combineReducers } from 'redux'
 
-import { appReducer } from '../reducers/appReducer'
+import { AppReducer } from '../reducers/appReducer'
 
 const applicationReducers = combineReducers({
-    appReducer
+    AppReducer
 })
 
 const initialState = {};

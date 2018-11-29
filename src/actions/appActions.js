@@ -1,8 +1,8 @@
-import { SOME_ACTION } from './actionTypes'
+import { BRANCH_DETAIL_LOADED } from './actionTypes'
 
-export function someAction(data) {
+export function setBranchLoadStatus(isLoaded) {
     return {
-        type: SOME_ACTION,
-        data
+        type: BRANCH_DETAIL_LOADED,
+        isLoaded
     }
 }

@@ -1,11 +1,13 @@
 import React, { Component, lazy, Suspense } from 'react'
+import { connect } from 'react-redux'
 import PageSection from '../components/shared/PageSection'
 import Spinner from '../components/shared/Spinner'
 import { SomeService } from '../services/SomeService'
+import { setBranchLoadStatus } from '../actions/appActions'
 
 const BranchDetail = lazy(() => import('../components/home/BranchDetail'))
 
-export default class HomeContainer extends Component {
+class HomeContainer extends Component {
 
     state = {
         branch: {},
@@ -19,6 +21,8 @@ export default class HomeContainer extends Component {
                 this.setState({
                     branch: response
                 })
+                
+                this.props.setBranchLoadStatus(true)
             })
             .catch((error) => {
                 console.log(error)
@@ -29,7 +33,7 @@ export default class HomeContainer extends Component {
         return (
             <div className="page-container">
                 <PageSection>
-                    aa
+                    some content
                 </PageSection>
                 <PageSection background="blue-lighter">
                     <Suspense fallback={<Spinner />}>
@@ -37,13 +41,27 @@ export default class HomeContainer extends Component {
                     </Suspense>
                 </PageSection>
                 <PageSection background="white">
-                    ccc
+                    <Spinner />
                 </PageSection>
                 <PageSection background="blue-darker">
-                    dd
+                    some content
                 </PageSection>
             </div>
         )
         
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      branchLoaded: state.AppReducer.branchDetailLoaded
+    }
+  }
+  
+const mapDispatchToProps = dispatch => {
+    return {
+        setBranchLoadStatus: isLoading => dispatch(setBranchLoadStatus(isLoading)),
+    }
+}
+  
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
