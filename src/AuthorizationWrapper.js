@@ -9,18 +9,17 @@ export default class AuthorizationWrapper extends Component {
     }
 
     componentWillMount() {
-        
+    
+        // doresit platnost tokenu atd. 
         const token = sessionStorage.getItem(CONFIG.STORAGE.TOKEN)
 
         if(token) {
             this.setState({ isLoggedIn: true})
-        } else { 
-            sessionStorage.setItem(CONFIG.STORAGE.TOKEN, "token")
-            this.setState({ isLoggedIn: true}) // odstranit 
         }
     }
 
     render() {
+
         if (this.state.isLoggedIn) {
             return this.props.wrappedComponent
         } else {

@@ -17,20 +17,17 @@ export default class SomeForm extends Component {
 
     state = {
         testObject: {
-            customer: "",
-            email: "",
-            other: "",
-            note: ""
+            customer: '',
+            email: '',
+            other: '',
+            note: ''
         }
     }
 
     handleChange(e) {
 
         let obj = this.state.testObject
-
-        const value = e.target.value
-        const name = e.target.name
-        obj[name] = value
+        obj[e.target.name] = e.target.value
 
         this.setState({testObject: obj})
     }
