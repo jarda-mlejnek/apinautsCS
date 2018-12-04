@@ -86,15 +86,6 @@ ul {
     margin: auto;
 }
 
-.error-content {
-    .error-header {
-
-    }
-    .error-image {
-        
-    }
-}
-
 .loader-container {
     vertical-align: middle;
     display: static;
@@ -251,9 +242,32 @@ ul {
     }
 }
 
-.other-form {
-    width: 400px;
-    margin: auto;
+.form-section-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 30px;
+    .other-form {
+        background: $white;
+        padding: 10px;
+        grid-column: 2/3;
+    }
+    .items-list {
+        grid-column: 1/2;
+    }
+}
+
+.items-list {
+    .list-item {
+        transition: 0.3s;
+        background: $grey-1;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        &:hover {
+            background: $orange;
+        }
+    }
 }
 
 .branch-detail {
@@ -263,3 +277,18 @@ ul {
     font-size: 22px;
     font-weight: 600;
 }
+
+.map-container {
+    width: 100%;
+    height: 400px;
+    .map {
+      max-height: 300px;
+    }
+  }
+
+.marker {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: $green;
+  }

@@ -7,18 +7,18 @@ import AppRouter from './AppRouter'
 import ErrorPageContainer from './containers/ErrorPageContainer'
 
 export default class App extends Component {
-    render() {
+	render() {
 
-        return (
-            <div className="app-container">
-                <Switch>
-                    <Route exact path='/' component={WelcomePage} />
-                    <Route path='/welcome' component={WelcomePage} />
-                    <Route path='/login' component={IdpRedirectPage} />
-                    <Route path='/app' render={() => <AuthorizationWrapper wrappedComponent={<AppRouter />} />} />
-                    <Route component={ErrorPageContainer} />
-                </Switch>
-            </div>
-        )
-    }
+		return (
+			<div className="app-container">
+				<Switch>
+					<Route exact path='/' component={WelcomePage} />
+					<Route path='/welcome' component={WelcomePage} />
+					<Route path='/login' component={IdpRedirectPage} />
+					<Route path='/app' component={AuthorizationWrapper(['role1', 'role2'])(AppRouter)} />
+					<Route component={ErrorPageContainer} />
+				</Switch>
+			</div>
+		)
+	}
 }

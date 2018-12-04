@@ -1,17 +1,17 @@
 import { 
-    BRANCH_DETAIL_LOADED  
+	BRANCH_DETAIL_LOADED  
 } from '../actions/actionTypes'
 
 export function AppReducer(state = {
-    branchDetailLoaded: false
+	branchDetailLoaded: false
 }, action) {
 
-    switch(action.type) {
+	switch(action.type) {
 
-        case BRANCH_DETAIL_LOADED:
-            return {...state, branchDetailLoaded: action.isLoaded}
+	case BRANCH_DETAIL_LOADED:
+		return {...state, branchDetailLoaded: action.isLoaded}
 
-        default: 
-            return state
-    }
+	default: 
+		return state
+	}
 }

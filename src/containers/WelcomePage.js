@@ -4,15 +4,15 @@ import Navigation from '../components/Navigation'
 import PageSection from '../components/shared/PageSection'
 
 export default function ErrorPageContainer(props) {
-    return (
+	return (
 
-        <div>
-            <Navigation links={CONFIG.NAVIGATION_LINKS.WELCOME} />
-            <div className="page-container">
-                <PageSection >
+		<div>
+			<Navigation links={CONFIG.NAVIGATION_LINKS.WELCOME} />
+			<div className="page-container">
+				<PageSection >
                     ddd
-                </PageSection> 
-            </div>         
-        </div>
-    )
+				</PageSection> 
+			</div>         
+		</div>
+	)
 }
