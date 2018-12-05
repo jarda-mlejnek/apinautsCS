@@ -30,6 +30,10 @@ export const CONFIG = {
 				label: 'OTHER',
 				link: '/app/other'
 			},
+            {
+                label: 'GRAPH',
+                link: '/app/graph'
+            },
 			{
 				label: 'ERROR',
 				link: '/app/hmmm'

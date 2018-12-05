@@ -52,6 +52,12 @@ ul {
   .page-section.blue-darker {
     background: #437bd4; }
 
+.graph {
+  padding: 10px; }
+
+.float-left {
+  float: left; }
+
 .section-content {
   width: 1440px;
   margin: auto; }
