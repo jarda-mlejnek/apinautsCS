@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import { GravatarService } from '../../services/GravatarService'
+import Img from 'react-image'
 import {Button, Form, TextInput} from '../shared/forms/'
 import {CONFIG} from "../../config";
 
@@ -9,6 +11,10 @@ export default class LoginForm extends Component {
 		super(props)
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
+
+		const defaultAvatarUrl = GravatarService.getGravatarUrl("")
+		console.debug("Default gravat url: " + defaultAvatarUrl)
+		this.state.person.url = defaultAvatarUrl
 	}
 
     static propTypes = {
@@ -17,14 +23,22 @@ export default class LoginForm extends Component {
 
     state = {
     	person: {
+			url: '',
     		name: '',
-    		rate: ''
+    		mdRate: ''
     	}
-    }
+	}
+	
+	componentWillMount() {
+		let min = 1000
+		let max = 10000
+		this.state.person.mdRate = this.generateRate(min, max);
+	}
 
-    handleChange(e) {
+    handleChange(e) {		
     	let person = this.state.person
-        person[e.target.name] = e.target.value
+		person[e.target.name] = e.target.value
+		person.url = GravatarService.getGravatarUrl(person.name)
     	this.setState({person: person})
     }
 
@@ -32,15 +46,9 @@ export default class LoginForm extends Component {
     	this.props.onSubmitForm(this.state.person)
 		let generatedRate = this.generateRate();
     	console.log('Generated rate: ' + generatedRate + ' for user: ' + this.state.person.name)
-
-        const itemsRef = window.firebase.database().ref(CONFIG.FIREBASE_SCHEMAS.ITEMS)
-        itemsRef.push(this.state.person)
-		console.log('added to firebase object: ' + this.state.person.name)
     }
 
-    generateRate() {
-		let min = 10000
-		let max = 20000
+    generateRate(min, max) {		
         let number = Math.floor(Math.random() * max) + min
         let rounded = Math.round(number / 1000) * 1000
 		return rounded
@@ -49,8 +57,10 @@ export default class LoginForm extends Component {
     render() {
     	return (
     		<div className="other-form">
-    			<Form onSubmit={this.handleSubmit}>
-    				<TextInput type="text" name="name" label="Your name" value={this.state.person.name} placeholder="Your name" required={true} onChange={this.handleChange}/>
+				<Img src={this.state.person.url} alt="" defaultValue />
+    			<Form onSubmit={this.handleSubmit}>				
+    				<TextInput type="text" name="name" label="Your email or name" value={this.state.person.name} placeholder="Your name or email" required={true} onChange={this.handleChange}/>
+					<TextInput type="text" name="mdRate" label="MD Rate" readOnly disabled="true" value={this.state.person.mdRate} />
     				<Button type="submit" name="button" class="green" label="SUBMIT" />
     			</Form>
     		</div>
