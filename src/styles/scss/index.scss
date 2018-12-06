@@ -203,12 +203,14 @@ ul {
                 color: $white;
             }
         }
-        &.stop-timer {
-            width: 100px;
+        &.big {
+            min-width: 100px;
             height: 60px;
-            font-size: 22px;
+            font-size: 20px;
             border-radius: 5px;
+            box-sizing: border-box;
         }
+
     }
 
     .combobox-options {
@@ -270,6 +272,11 @@ ul {
         grid-column: 1/2;
     }
 }
+
+.register-form-button {
+    margin-top: 30px;
+    text-align: center;
+}   
 
 .other-form {
     background: $white;

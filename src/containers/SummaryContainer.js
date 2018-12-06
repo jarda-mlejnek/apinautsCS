@@ -74,7 +74,7 @@ export default class OtherContainer extends Component {
                                 <RatesListItem value={666} icon={faBeer}/>
                             </RatesList>
                             <div className="stop-container">
-                                <Button type="button" name="aa" class="orange stop-timer" label="Stop" onClick={this.handleStopTimer} />
+                                <Button type="button" name="aa" class="orange big" label="Stop" onClick={this.handleStopTimer} />
                             </div>
                         </div>
 					</div>
