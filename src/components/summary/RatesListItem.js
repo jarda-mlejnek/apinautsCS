@@ -8,6 +8,9 @@ export default function SomeRateListItem(props) {
             <div className="price">{props.value}</div>
             <div className="currency">
                 <FontAwesomeIcon className="icon" icon={props.icon} />
+              <div>
+                {props.text}
+              </div>
             </div>
         </div>
 	)   
