@@ -59,7 +59,6 @@ export default class MeetingContainer extends Component {
     }
 
     render() {
-
         return (
             <div className="page-container">
                 <PageSection background={'blue'}>
