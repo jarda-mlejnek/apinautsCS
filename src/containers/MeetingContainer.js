@@ -12,16 +12,18 @@ export default class MeetingContainer extends Component {
 		super(props)
         this.state.uuid = QRCodeService.create_UUID()
         this.state.qrUrl = QRCodeService.getLoginPageQRCode(this.state.uuid)
+        this.state.fireBaseSchema = CONFIG.FIREBASE_SCHEMAS.ITEMS + '-' + this.state.uuid
 	}
 
     state = {
     	people: [],
         qrUrl: '',
-        uuid: ''
+        uuid: '',
+        fireBaseSchema: ''
     }
 
     componentDidMount() {
-        const itemsRef = window.firebase.database().ref(CONFIG.FIREBASE_SCHEMAS.ITEMS)
+        const itemsRef = window.firebase.database().ref(this.state.fireBaseSchema)
 
         console.log('itemsRef: ' + itemsRef)
 
