@@ -30,8 +30,8 @@ export default class LoginForm extends Component {
 	}
 	
 	componentWillMount() {
-		let min = 1000
-		let max = 10000
+		let min = 5000
+		let max = 20000
 		this.state.person.mdRate = this.generateRate(min, max);
 	}
 
@@ -44,8 +44,7 @@ export default class LoginForm extends Component {
 
     handleSubmit(obj) {
     	this.props.onSubmitForm(this.state.person)
-		let generatedRate = this.generateRate();
-    	console.log('Generated rate: ' + generatedRate + ' for user: ' + this.state.person.name)
+    	console.log('Generated rate: ' + this.state.person.mdRate + ' for user: ' + this.state.person.name)
     }
 
     generateRate(min, max) {		
@@ -57,10 +56,12 @@ export default class LoginForm extends Component {
     render() {
     	return (
     		<div className="other-form">
-				<Img src={this.state.person.url} alt="" defaultValue />
+				<div className="avatar-img">
+					<Img src={this.state.person.url} alt="" defaultValue />
+				</div>
     			<Form onSubmit={this.handleSubmit}>				
     				<TextInput type="text" name="name" label="Your email or name" value={this.state.person.name} placeholder="Your name or email" required={true} onChange={this.handleChange}/>
-					<TextInput type="text" name="mdRate" label="MD Rate" readOnly disabled="true" value={this.state.person.mdRate} />
+					<TextInput type="text" name="mdRate" disabled={true} label="MD Rate" readOnly disabled="true" value={this.state.person.mdRate} />
     				<Button type="submit" name="button" class="green" label="SUBMIT" />
     			</Form>
     		</div>

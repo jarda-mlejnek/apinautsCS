@@ -14,6 +14,7 @@ export default function TextInput(props) {
 		min, 
 		max,
 		value = '',
+		disabled,
 		onChange 
 	} = props
 
@@ -31,6 +32,7 @@ export default function TextInput(props) {
 				min={min}
 				max={max}
 				required={required}
+				disabled={disabled}
 			/>
 			<div className="error-message"></div>
 		</div>
