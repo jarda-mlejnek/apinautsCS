@@ -17,6 +17,7 @@ export default class OtherContainer extends Component {
 	}
 
     state = {
+        summaryValue: 0,
         timer: {
             seconds: 0,
             minutes: 0,
@@ -28,6 +29,18 @@ export default class OtherContainer extends Component {
 
     componentDidMount() {
         this.interval = setInterval(() => this.tick(), 1000);
+
+      const itemsRef = window.firebase.database().ref(CONFIG.FIREBASE_SCHEMAS.ITEMS)
+
+      let summary = 0
+      itemsRef.on('value', (snapshot) => {
+        let items = snapshot.val()
+        for (let item in items) {
+          summary += items[item].mdRate === undefined ? 0 : items[item].mdRate
+        }
+        this.setState({ summaryValue: summary})
+
+      })
     }
 
     tick() {
@@ -69,9 +82,9 @@ export default class OtherContainer extends Component {
                         <div className="summary-content">
                             <div className="timer">{moment('2018-01-01 ' + currentTime).format('HH:mm:ss')}</div>
                             <RatesList loading={this.state.loadingRates}>
-                                <RatesListItem value={666} icon={faDollarSign} />
-                                <RatesListItem value={666} icon={faBitcoin} />
-                                <RatesListItem value={666} icon={faBeer}/>
+                                <RatesListItem value={this.state.summaryValue} icon={faDollarSign} />
+                                <RatesListItem value={this.state.summaryValue} icon={faBitcoin} />
+                                <RatesListItem value={this.state.summaryValue} icon={faBeer}/>
                             </RatesList>
                             <div className="stop-container">
                                 <Button type="button" name="aa" class="orange big" label="Stop" onClick={this.handleStopTimer} />
