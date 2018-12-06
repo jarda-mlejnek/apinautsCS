@@ -8,6 +8,7 @@ import SummaryContainer from "./containers/SummaryContainer"
 import MeetingContainer from "./containers/MeetingContainer";
 
 export default class App extends Component {
+
 	render() {
 
 		return (

@@ -35,8 +35,18 @@ ul {
     position: relative;
     border-bottom: 1px solid $blue-3;
     .nav-items {
+        .header {
+            font-weight: 600;
+            padding: 0;
+            letter-spacing: 2px;
+            font-size: 14px;
+            line-height: $menu-height;
+            vertical-align: middle;
+            color: $blue-4;
+            box-sizing: border-box;
+        }
         position: absolute;
-        right: 20px;
+        left: 20px;
         ul {
             li {
                 display: inline-block;
@@ -434,20 +444,51 @@ ul {
 
 .people-list-container {
     .people-list-item {
-        margin: 5px 0;
-        padding: 10px 20px;
+        margin: 20px 0;
         background: $white;
-        .name, .rate {
-            display: inline;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 5px;
+        .avatar {
+            grid-column: 1/2;
+            img {
+                border: 1px solid $grey-1;
+                height: 50px;
+                padding: none;
+                margin: none;
+                padding: 5px;
+            }
         }
         .name {
+            align-self: center;
             font-weight: bold;
+            grid-column: 2/3;
         }
         .rate {
-            float: right;
+            align-self: center;
+            grid-column: 3/4;
+            text-align: right;
+            padding-right: 30px;
         }
         &:hover {
-            background: $grey-1;
+            background: $blue-2;
         }
     }
 }
+
+@media only screen 
+    and (min-width: 320px) 
+    and (max-width: 1200px) {
+        .page-container {
+            width: 100%;
+        }
+        .section-content {
+            width: 100%;
+        }
+        .login-form-section-grid {
+            box-sizing: border-box;
+            grid-template-columns: auto;
+            grid-template-rows: auto;
+        }
+    }
