@@ -203,12 +203,14 @@ ul {
                 color: $white;
             }
         }
-        &.stop-timer {
-            width: 100px;
+        &.big {
+            min-width: 100px;
             height: 60px;
-            font-size: 22px;
+            font-size: 20px;
             border-radius: 5px;
+            box-sizing: border-box;
         }
+
     }
 
     .combobox-options {
@@ -271,13 +273,23 @@ ul {
     }
 }
 
+.register-form-button {
+    margin-top: 30px;
+    text-align: center;
+}   
+
 .other-form {
     background: $white;
     border: 1px solid $grey-1;
     border-radius: 10px;
     padding: 20px;
     .avatar-img {
+        margin: auto;
         height: 80px;
+        width: 80px;
+        border: 1px solid $grey-1;
+        padding: 5px;
+        border-radius: 50%;
     }
 }
 
@@ -385,6 +397,57 @@ ul {
         .stop-container {
             margin-top: 40px;
             text-align: center;
+        }
+    }
+}
+
+.meeting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    .header {
+        grid-row: 1/2;
+        grid-column: 2/3;
+        text-align: center;
+    }
+    .qr-code-container {
+        grid-row: 2/3;
+        grid-column: 2/3;
+    }
+    .people-list-container {
+        grid-row: 2/3;
+        grid-column: 1/2;
+    }
+}
+
+.qr-code-container {
+    justify-self: center;
+    .qr-code {
+        width: 300px;
+    }
+    .register-button-container {
+        width: 100%;
+        margin-top: 30px;
+        text-align: center;
+    }
+}
+
+.people-list-container {
+    .people-list-item {
+        margin: 5px 0;
+        padding: 10px 20px;
+        background: $white;
+        .name, .rate {
+            display: inline;
+        }
+        .name {
+            font-weight: bold;
+        }
+        .rate {
+            float: right;
+        }
+        &:hover {
+            background: $grey-1;
         }
     }
 }

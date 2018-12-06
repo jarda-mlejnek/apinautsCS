@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import PersonListItem from './PersonListItem'
 
 export default function Person(props) {
     
 	const items = props.items.map((item, index) => {
-		return <div key={index} className="list-item">{item.name} {item.mdRate}</div>
+		return <PersonListItem key={index} name={item.name} rate={item.mdRate} />
 	})
 
 	return (
-		<div className="items-list">
+		<div className="people-list-container">
 			{items}
 		</div>
 	)   

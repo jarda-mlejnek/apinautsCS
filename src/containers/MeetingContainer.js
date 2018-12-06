@@ -1,25 +1,41 @@
 import React, {Component} from 'react'
 import PageSection from '../components/shared/PageSection'
 import {CONFIG} from "../config";
-import Person from "../components/other/Person";
 import {Link} from "react-router-dom";
 import Button from "../components/shared/forms/Button";
 import {QRCodeService} from '../services/QRCodeService'
+import * as queryString from "query-string";
+import PersonList from "../components/other/PersonList";
 
 export default class MeetingContainer extends Component {
 
-	constructor(props) {
-		super(props)
-        this.state.qrUrl = QRCodeService.getLoginPageQRCode(111)
-	}
-
     state = {
-    	people: [],
-        qrUrl: ''
+        people: [],
     }
 
+    constructor(props) {
+        super(props)
+        this.state.uuid = this.getUuid()
+        this.state.qrUrl = QRCodeService.getLoginPageQRCode(this.state.uuid)
+        this.state.fireBaseSchema = CONFIG.FIREBASE_SCHEMAS.ITEMS + '-' + this.state.uuid
+    }
+
+    getUuid() {
+        const queryParams = queryString.parse(this.props.location.search)
+
+        if (queryParams.id) {
+            console.log('obtained id: ', queryParams.id)
+            return queryParams.id
+        } else {
+            let uuid = QRCodeService.createUuid();
+            console.log('generated uuid: ', uuid)
+            return uuid
+        }
+    }
+
+
     componentDidMount() {
-        const itemsRef = window.firebase.database().ref(CONFIG.FIREBASE_SCHEMAS.ITEMS)
+        const itemsRef = window.firebase.database().ref(this.state.fireBaseSchema)
 
         console.log('itemsRef: ' + itemsRef)
 
@@ -35,31 +51,34 @@ export default class MeetingContainer extends Component {
                     mdRate: items[item].mdRate
                 })
             }
-            console.log('result.name: ' + result[result.length-1].name + ' result.mdRate: ' + result[result.length-1].mdRate
-                + ' result.id: ' + result[result.length-1].id)
             this.setState({people: result})
-
         })
     }
 
     render() {
-    	return (
-    		<div className="page-container">
-    			<PageSection background={'blue'}>
-                    <div>
-                        <h5>Join us</h5>
-                        <img src={this.state.qrUrl}/>
+        return (
+            <div className="page-container">
+                <PageSection background={'blue'}>
+                    <div className="meeting-grid">
+                        <div className="header">
+                            <div className="qr-header">
+                                <h5>Join us</h5>
+                            </div>
+                        </div>
+                        <div className="qr-code-container">
+                            <div className="qr-image">
+                                <img src={this.state.qrUrl} className="qr-code" />
+                            </div>
+                            <div className="register-button-container">
+                                <Link to="/app/summary">
+                                    <Button type="submit" name="button" class="green big" label="Start" />
+                                </Link>
+                            </div>
+                        </div>
+                        <PersonList items={this.state.people} />
                     </div>
-                    <div>
-                        <Link to="/app/summary">
-                            <Button type="submit" name="button" class="green" label="Start" />
-                        </Link>
-                    </div>
-					<div className="meeting-form-section-grid">
-                        <Person items={this.state.people} />
-					</div>
-    			</PageSection>
-    		</div>
-    	)     
+                </PageSection>
+            </div>
+        )
     }
 }

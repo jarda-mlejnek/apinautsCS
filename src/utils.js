@@ -1,0 +1,1 @@
+export const roundValue = (amount, places = 2) => Math.round(amount * Math.pow(10, places)) / Math.pow(10, places)
