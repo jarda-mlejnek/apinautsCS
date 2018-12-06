@@ -10,12 +10,14 @@ export default class MeetingContainer extends Component {
 
 	constructor(props) {
 		super(props)
-        this.state.qrUrl = QRCodeService.getLoginPageQRCode(111)
+        this.state.uuid = QRCodeService.create_UUID()
+        this.state.qrUrl = QRCodeService.getLoginPageQRCode(this.state.uuid)
 	}
 
     state = {
     	people: [],
-        qrUrl: ''
+        qrUrl: '',
+        uuid: ''
     }
 
     componentDidMount() {
