@@ -434,20 +434,35 @@ ul {
 
 .people-list-container {
     .people-list-item {
-        margin: 5px 0;
-        padding: 10px 20px;
+        margin: 20px 0;
         background: $white;
-        .name, .rate {
-            display: inline;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 5px;
+        .avatar {
+            grid-column: 1/2;
+            img {
+                border: 1px solid $grey-1;
+                height: 50px;
+                padding: none;
+                margin: none;
+                padding: 5px;
+            }
         }
         .name {
+            align-self: center;
             font-weight: bold;
+            grid-column: 2/3;
         }
         .rate {
-            float: right;
+            align-self: center;
+            grid-column: 3/4;
+            text-align: right;
+            padding-right: 30px;
         }
         &:hover {
-            background: $grey-1;
+            background: $blue-2;
         }
     }
 }

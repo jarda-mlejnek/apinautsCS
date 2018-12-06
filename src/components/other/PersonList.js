@@ -5,7 +5,7 @@ import PersonListItem from './PersonListItem'
 export default function Person(props) {
     
 	const items = props.items.map((item, index) => {
-		return <PersonListItem key={index} name={item.name} rate={item.mdRate} />
+		return <PersonListItem key={index} person={item} />
 	})
 
 	return (

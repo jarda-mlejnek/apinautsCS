@@ -5,7 +5,8 @@ import {Link} from "react-router-dom";
 import Button from "../components/shared/forms/Button";
 import {QRCodeService} from '../services/QRCodeService'
 import * as queryString from "query-string";
-import PersonList from "../components/other/PersonList";
+import PersonList from "../components/other/PersonList"
+import { GravatarService } from '../services/GravatarService'
 
 export default class MeetingContainer extends Component {
 
@@ -47,15 +48,18 @@ export default class MeetingContainer extends Component {
             for (let item in items) {
                 result.push({
                     id: item,
+                    avatar: GravatarService.getGravatarUrl(items[item].name),
                     name: items[item].name,
                     mdRate: items[item].mdRate
                 })
             }
+
             this.setState({people: result})
         })
     }
 
     render() {
+
         return (
             <div className="page-container">
                 <PageSection background={'blue'}>
