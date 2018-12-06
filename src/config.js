@@ -33,14 +33,22 @@ export const CONFIG = {
             {
                 label: 'GRAPH',
                 link: '/app/graph'
-            },
+			},
+			{
+				label: 'SUMMARY',
+				link: '/app/summary'
+			},
 			{
 				label: 'ERROR',
 				link: '/app/hmmm'
-			}
+			},
+            {
+                label: 'LOGIN',
+                link: '/app/login'
+            }
 		]
     },
     FIREBASE_SCHEMAS: {
-        ITEMS: 'items'
+        ITEMS: 'people-test'
     }
 }

@@ -203,6 +203,12 @@ ul {
                 color: $white;
             }
         }
+        &.stop-timer {
+            width: 100px;
+            height: 60px;
+            font-size: 22px;
+            border-radius: 5px;
+        }
     }
 
     .combobox-options {
@@ -266,6 +272,15 @@ ul {
     }
 }
 
+.login-form-section-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 30px;
+    padding: 10px;
+}
+
 .items-list {
     .list-item {
         transition: 0.3s;
@@ -299,4 +314,51 @@ ul {
     height: 20px;
     border-radius: 50%;
     background: $green;
-  }
+} 
+
+.summary-section-container {
+    width: 800px;
+    margin: auto;
+    .summary-header {
+        text-align: center;
+        h1 {
+            font-size: 46px;
+        }
+    }
+    .summary-content {
+        background: $white;
+        border-radius: 10px;
+        padding: 20px;
+        .timer {
+            text-align: center;
+            color: $blue-4;
+            font-size: 50px;
+            font-weight: bold;
+            padding: 10px 0;
+        }
+        .price-list {
+            margin: auto;
+            .price-list-item {
+                margin: auto;
+                background: $blue-1;
+                margin: 20px 0;
+                padding: 15px 20px;
+                width: 200px;
+                &:hover {
+                    background: $green;
+                }
+                .price {
+                    width: 50%;
+                    display: inline-block;
+                }
+                .currency {
+                    width: 50%;
+                    display: inline-block;
+                }
+            }
+        }
+        .stop-container {
+            text-align: center;
+        }
+    }
+}
