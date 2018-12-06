@@ -26,10 +26,6 @@ export const CONFIG = {
 			}
 		],
 		APP: [
-			{
-				label: 'HOME',
-				link: '/app/home'
-			},
 			// {
 			// 	label: 'OTHER',
 			// 	link: '/app/other'
