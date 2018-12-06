@@ -4,12 +4,11 @@ import moment from 'moment'
 import RatesList from '../components/summary/RatesList'
 import RatesListItem from '../components/summary/RatesListItem'
 import PageSection from '../components/shared/PageSection'
-import { faDollarSign, faBeer } from '@fortawesome/free-solid-svg-icons'
+import { faDollarSign, faBeer, faFrown } from '@fortawesome/free-solid-svg-icons'
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons'
 import { Button } from '../components/shared/forms'
 import { roundValue } from '../utils'
 import Spinner from '../components/shared/Spinner'
-import {SomeService} from "../services/SomeService";
 import {ExchangeService} from "../services/ExchangeService";
 
 export default class OtherContainer extends Component {
@@ -22,6 +21,7 @@ export default class OtherContainer extends Component {
     state = {
         summaryValue: 0,
         summaryInTime: 0,
+        users: 0,
         totalSeconds: 0,
         timer: {
             seconds: 0,
@@ -40,12 +40,15 @@ export default class OtherContainer extends Component {
       const itemsRef = window.firebase.database().ref(CONFIG.FIREBASE_SCHEMAS.ITEMS)
 
       let summary = 0
+      let users = 0
       itemsRef.on('value', (snapshot) => {
         let items = snapshot.val()
         for (let item in items) {
           summary += items[item].mdRate === undefined ? 0 : items[item].mdRate
+          users++
         }
-        this.setState({ summaryValue: summary})
+        this.setState({ summaryValue: summary })
+        this.setState({ users: users })
       })
 
       ExchangeService.getCzkToBtcRate()
@@ -70,7 +73,7 @@ export default class OtherContainer extends Component {
         })
         .catch((error) => {
           this.setState({
-            usdRate: 0.05
+            usdRate: 0.045
           })
         })
     }
@@ -118,6 +121,7 @@ export default class OtherContainer extends Component {
                         <div className="summary-content">
                             <div className="timer">{moment('2018-01-01 ' + currentTime).format('HH:mm:ss')}</div>
                             <RatesList loading={this.state.loadingRates}>
+                              <RatesListItem value={this.state.users} info="people" icon={faFrown} />
                                 <RatesListItem value={roundValue(this.state.summaryInTime)} text="CZK" />
                                 <RatesListItem value={roundValue(this.state.summaryInTime * this.state.usdRate)} icon={faDollarSign} />
                                 <RatesListItem value={roundValue(this.state.summaryInTime / this.state.bitcoinRate, 6)} icon={faBitcoin} />

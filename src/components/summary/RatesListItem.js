@@ -5,7 +5,7 @@ export default function SomeRateListItem(props) {
 
 	return (
 		<div className="price-list-item">
-            <div className="price">{props.value}</div>
+            <div className="price">{props.value} {props.info}</div>
             <div className="currency">
                 <FontAwesomeIcon className="icon" icon={props.icon} />
               <div>
