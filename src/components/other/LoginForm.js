@@ -30,8 +30,8 @@ export default class LoginForm extends Component {
 	}
 	
 	componentWillMount() {
-		let min = 1000
-		let max = 10000
+		let min = 5000
+		let max = 20000
 		this.state.person.mdRate = this.generateRate(min, max);
 	}
 
@@ -44,8 +44,7 @@ export default class LoginForm extends Component {
 
     handleSubmit(obj) {
     	this.props.onSubmitForm(this.state.person)
-		let generatedRate = this.generateRate();
-    	console.log('Generated rate: ' + generatedRate + ' for user: ' + this.state.person.name)
+    	console.log('Generated rate: ' + this.state.person.mdRate + ' for user: ' + this.state.person.name)
     }
 
     generateRate(min, max) {		

@@ -20,7 +20,7 @@ export default class LoginContainer extends Component {
     handleSubmitForm(person) {	
         const itemsRef = window.firebase.database().ref(CONFIG.FIREBASE_SCHEMAS.ITEMS)
         itemsRef.push({ name: person.name, mdRate: person.mdRate })
-		console.log('added to firebase object and sent: ' + person)
+		console.log('added to firebase object and sent: ', person)
     }
 
     render() {
