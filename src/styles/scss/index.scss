@@ -400,3 +400,46 @@ ul {
         }
     }
 }
+
+.meeting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    .qr-code-container {
+        grid-row: 1/2;
+        grid-column: 2/3;
+    }
+    .people-list-container {
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+}
+
+.qr-code-container {
+    justify-self: center;
+    .qr-code {
+        width: 300px;
+    }
+    .register-button-container {
+        width: 100%;
+        margin-top: 30px;
+        text-align: center;
+    }
+}
+
+.people-list-container {
+    .people-list-item {
+        margin: 5px 0;
+        padding: 10px 20px;
+        background: $white;
+        .name, .rate {
+            display: inline;
+        }
+        .rate {
+            float: right;
+        }
+        &:hover {
+            background: $grey-1;
+        }
+    }
+}
