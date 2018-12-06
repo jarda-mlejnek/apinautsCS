@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PageSection from '../components/shared/PageSection'
-import LoginForm from "../components/other/LoginForm";
+import LoginForm from "../components/other/LoginForm"
+import { CONFIG } from '../config'
 
 export default class LoginContainer extends Component {
 
@@ -16,8 +17,10 @@ export default class LoginContainer extends Component {
     componentDidMount() {
     }
 
-    handleSubmitForm(obj) {
-		// console.log(obj)
+    handleSubmitForm(person) {	
+        const itemsRef = window.firebase.database().ref(CONFIG.FIREBASE_SCHEMAS.ITEMS)
+        itemsRef.push({ name: person.name, mdRate: person.mdRate })
+		console.log('added to firebase object and sent: ' + person)
     }
 
     render() {
