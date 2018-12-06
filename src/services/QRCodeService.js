@@ -7,10 +7,9 @@ export const QRCodeService = (function () {
         },
 
         getMeetingUrl: function(meetingId) {            
-            let url = window.location.href            
-            url = url + 'app/login?id=' + meetingId;
+            let url = window.location.origin            
+            url = url + '/app/login?id=' + meetingId;
            
-
             return url;
         },
 
