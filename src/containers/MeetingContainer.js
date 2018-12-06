@@ -47,13 +47,38 @@ export default class MeetingContainer extends Component {
     }
 
     render() {
+
+        const people = [
+            {
+                name: "666",
+                mdRate: "dsad"
+            }, 
+            {
+                name: "666",
+                mdRate: "dsad"
+            }, 
+            {
+                name: "666",
+                mdRate: "dsad"
+            }, 
+            {
+                name: "666",
+                mdRate: "dsad"
+            }, 
+
+        ]
+
     	return (
     		<div className="page-container">
     			<PageSection background={'blue'}>
                     <div className="meeting-grid">
+                        <div className="header">
+                            <div className="qr-header">
+                                <h5>Join us</h5>
+                            </div>
+                        </div>
                         <div className="qr-code-container">
                             <div className="qr-image">
-                                <h5>Join us</h5>
                                 <img src={this.state.qrUrl} className="qr-code" />
                             </div>
                             <div className="register-button-container">
