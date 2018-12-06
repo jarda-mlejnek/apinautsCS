@@ -57,10 +57,12 @@ export default class LoginForm extends Component {
     render() {
     	return (
     		<div className="other-form">
-				<Img src={this.state.person.url} alt="" defaultValue />
+				<div className="avatar-img">
+					<Img src={this.state.person.url} alt="" defaultValue />
+				</div>
     			<Form onSubmit={this.handleSubmit}>				
     				<TextInput type="text" name="name" label="Your email or name" value={this.state.person.name} placeholder="Your name or email" required={true} onChange={this.handleChange}/>
-					<TextInput type="text" name="mdRate" label="MD Rate" readOnly disabled="true" value={this.state.person.mdRate} />
+					<TextInput type="text" name="mdRate" disabled={true} label="MD Rate" readOnly disabled="true" value={this.state.person.mdRate} />
     				<Button type="submit" name="button" class="green" label="SUBMIT" />
     			</Form>
     		</div>
