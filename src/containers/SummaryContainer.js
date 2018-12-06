@@ -16,6 +16,11 @@ export default class OtherContainer extends Component {
 	constructor(props) {
         super(props)
         this.handleStopTimer = this.handleStopTimer.bind(this)
+
+        const urlSearchParams = new URLSearchParams(this.props.location.search.substring(1))
+		    const meetingId = urlSearchParams.get("id")
+
+		    this.state.meetingId = meetingId
 	}
 
     state = {
@@ -35,9 +40,9 @@ export default class OtherContainer extends Component {
     }
 
     componentDidMount() {
-        this.interval = setInterval(() => this.tick(), 1000);
+      this.interval = setInterval(() => this.tick(), 1000);
 
-      const itemsRef = window.firebase.database().ref(CONFIG.FIREBASE_SCHEMAS.ITEMS)
+      const itemsRef = window.firebase.database().ref(CONFIG.FIREBASE_SCHEMAS.ITEMS + "-" + this.state.meetingId) 
 
       let summary = 0
       let users = 0

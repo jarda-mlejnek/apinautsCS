@@ -70,10 +70,12 @@ export default class MeetingContainer extends Component {
                         </div>
                         <div className="qr-code-container">
                             <div className="qr-image">
-                                <img src={this.state.qrUrl} className="qr-code" />
+                                <a href={  QRCodeService.getMeetingUrl(this.state.uuid) }>
+                                    <img src={this.state.qrUrl} className="qr-code" />
+                                </a>
                             </div>
                             <div className="register-button-container">
-                                <Link to="/app/summary">
+                                <Link to={ "/app/summary/?id=" + this.state.uuid }>
                                     <Button type="submit" name="button" class="green big" label="Start" />
                                 </Link>
                             </div>
