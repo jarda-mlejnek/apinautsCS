@@ -33,7 +33,11 @@ export const CONFIG = {
             {
                 label: 'GRAPH',
                 link: '/app/graph'
-            },
+			},
+			{
+				label: 'SUMMARY',
+				link: '/app/summary'
+			},
 			{
 				label: 'ERROR',
 				link: '/app/hmmm'

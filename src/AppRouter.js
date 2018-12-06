@@ -5,7 +5,8 @@ import Navigation from './components/Navigation'
 import HomeContainer from './containers/HomeContainer'
 import OtherContainer from './containers/OtherContainer'
 import ErrorPageContainer from './containers/ErrorPageContainer'
-import GraphContainer from "./containers/GraphContainer";
+import GraphContainer from "./containers/GraphContainer"
+import SummaryContainer from "./containers/SummaryContainer"
 
 class AppRouter extends Component {
   
@@ -18,6 +19,7 @@ class AppRouter extends Component {
 					<Route path='/app/home' component={HomeContainer} />
 					<Route path='/app/other' component={OtherContainer} />
                     <Route path='/app/graph' component={GraphContainer} />
+					<Route path='/app/summary' component={SummaryContainer} />
 					<Route component={ErrorPageContainer} />
 				</Switch>
 			</div>
