@@ -29,10 +29,11 @@ export default class MeetingContainer extends Component {
                 result.push({
                     id: item,
                     name: items[item].name,
-                    rate: items[item].rate
+                    mdRate: items[item].mdRate
                 })
             }
-            console.log('result.name: ' + result[0].name + ' result.rate: ' + result[0].rate + ' result.id: ' + result[0].id)
+            console.log('result.name: ' + result[result.length-1].name + ' result.mdRate: ' + result[result.length-1].mdRate
+                + ' result.id: ' + result[result.length-1].id)
             this.setState({people: result})
         })
     }
