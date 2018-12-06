@@ -26,25 +26,33 @@ export const CONFIG = {
 				label: 'HOME',
 				link: '/app/home'
 			},
-			{
-				label: 'OTHER',
-				link: '/app/other'
-			},
-            {
-                label: 'GRAPH',
-                link: '/app/graph'
-			},
+			// {
+			// 	label: 'OTHER',
+			// 	link: '/app/other'
+			// },
+            // {
+            //     label: 'GRAPH',
+            //     link: '/app/graph'
+			// },
 			{
 				label: 'SUMMARY',
 				link: '/app/summary'
 			},
-			{
-				label: 'ERROR',
-				link: '/app/hmmm'
-			}
+			// {
+			// 	label: 'ERROR',
+			// 	link: '/app/hmmm'
+			// },
+            {
+                label: 'LOGIN',
+                link: '/app/login'
+            },
+            {
+                label: 'MEETING',
+                link: '/app/meeting'
+            }
 		]
     },
     FIREBASE_SCHEMAS: {
-        ITEMS: 'items'
+        ITEMS: 'people-test'
     }
 }

@@ -5,8 +5,10 @@ import Navigation from './components/Navigation'
 import HomeContainer from './containers/HomeContainer'
 import OtherContainer from './containers/OtherContainer'
 import ErrorPageContainer from './containers/ErrorPageContainer'
+import LoginContainer from "./containers/LoginContainer";
 import GraphContainer from "./containers/GraphContainer"
 import SummaryContainer from "./containers/SummaryContainer"
+import MeetingContainer from "./containers/MeetingContainer";
 
 class AppRouter extends Component {
   
@@ -18,8 +20,10 @@ class AppRouter extends Component {
 					<Route exact path='/app' component={HomeContainer} />
 					<Route path='/app/home' component={HomeContainer} />
 					<Route path='/app/other' component={OtherContainer} />
+                    <Route path='/app/login' component={LoginContainer} />
                     <Route path='/app/graph' component={GraphContainer} />
 					<Route path='/app/summary' component={SummaryContainer} />
+                    <Route path='/app/meeting' component={MeetingContainer} />
 					<Route component={ErrorPageContainer} />
 				</Switch>
 			</div>
