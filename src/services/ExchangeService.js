@@ -5,12 +5,12 @@ export const ExchangeService = (function () {
 
   return {
 
-    convertCzkToUsd: async function (amountCzk) {
+    getCzkToUsdRate: async function () {
       let payload = {
         'from': 'CZK',
         'to': 'USD',
-        'type': 'BUY',
-        'amount': amountCzk != null ? amountCzk : 100000,
+        'type': 'CASH',
+        'amount': 1,
         'buy': 'true'
       }
 
