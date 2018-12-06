@@ -320,6 +320,7 @@ ul {
         background: $white;
         border-radius: 10px;
         padding: 20px;
+        margin: 0;     
         .timer {
             text-align: center;
             color: $blue-4;
@@ -328,15 +329,16 @@ ul {
             padding: 10px 0;
         }
         .price-list {
-            margin: auto;
+            margin: 40px 0;
+
             .price-list-item {
                 margin: auto;
-                background: $blue-1;
-                margin: 20px 0;
                 padding: 15px 20px;
-                width: 200px;
+                width: 150px;
+                border-bottom: 1px solid $grey-1;
                 &:hover {
-                    background: $green;
+                    background: $grey-1;
+                    cursor: pointer;
                 }
                 .price {
                     width: 50%;
@@ -345,10 +347,16 @@ ul {
                 .currency {
                     width: 50%;
                     display: inline-block;
+                    text-align: center;
+                    font-size: 22px;
+                    .icon {
+                        color: $blue-4;
+                    }
                 }
             }
         }
         .stop-container {
+            margin-top: 40px;
             text-align: center;
         }
     }
