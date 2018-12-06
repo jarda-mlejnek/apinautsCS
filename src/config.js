@@ -41,10 +41,14 @@ export const CONFIG = {
 			{
 				label: 'ERROR',
 				link: '/app/hmmm'
-			}
+			},
+            {
+                label: 'LOGIN',
+                link: '/app/login'
+            }
 		]
     },
     FIREBASE_SCHEMAS: {
-        ITEMS: 'items'
+        ITEMS: 'people-test'
     }
 }

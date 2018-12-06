@@ -272,6 +272,15 @@ ul {
     }
 }
 
+.login-form-section-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 30px;
+    padding: 10px;
+}
+
 .items-list {
     .list-item {
         transition: 0.3s;
