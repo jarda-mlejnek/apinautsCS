@@ -18,6 +18,7 @@ export default class OtherContainer extends Component {
 
     state = {
         summaryValue: 0,
+        summaryInTime: 0,
         timer: {
             seconds: 0,
             minutes: 0,
@@ -59,6 +60,7 @@ export default class OtherContainer extends Component {
                 timer.hours++
             }
 
+            this.setState({summaryInTime: (this.state.summaryValue / 8 / 3600 * timer.seconds)})
             this.setState({timer: timer})
         }
     }
@@ -82,9 +84,9 @@ export default class OtherContainer extends Component {
                         <div className="summary-content">
                             <div className="timer">{moment('2018-01-01 ' + currentTime).format('HH:mm:ss')}</div>
                             <RatesList loading={this.state.loadingRates}>
-                                <RatesListItem value={this.state.summaryValue} icon={faDollarSign} />
-                                <RatesListItem value={this.state.summaryValue} icon={faBitcoin} />
-                                <RatesListItem value={this.state.summaryValue} icon={faBeer}/>
+                                <RatesListItem value={this.state.summaryInTime} icon={faDollarSign} />
+                                <RatesListItem value={this.state.summaryInTime} icon={faBitcoin} />
+                                <RatesListItem value={this.state.summaryInTime} icon={faBeer}/>
                             </RatesList>
                             <div className="stop-container">
                                 <Button type="button" name="aa" class="orange big" label="Stop" onClick={this.handleStopTimer} />
