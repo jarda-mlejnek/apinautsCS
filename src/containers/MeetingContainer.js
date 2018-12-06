@@ -4,15 +4,18 @@ import {CONFIG} from "../config";
 import Person from "../components/other/Person";
 import {Link} from "react-router-dom";
 import Button from "../components/shared/forms/Button";
+import {QRCodeService} from '../services/QRCodeService'
 
 export default class MeetingContainer extends Component {
 
 	constructor(props) {
 		super(props)
+        this.state.qrUrl = QRCodeService.getLoginPageQRCode(111)
 	}
 
     state = {
     	people: [],
+        qrUrl: ''
     }
 
     componentDidMount() {
@@ -35,6 +38,7 @@ export default class MeetingContainer extends Component {
             console.log('result.name: ' + result[result.length-1].name + ' result.mdRate: ' + result[result.length-1].mdRate
                 + ' result.id: ' + result[result.length-1].id)
             this.setState({people: result})
+
         })
     }
 
@@ -42,6 +46,10 @@ export default class MeetingContainer extends Component {
     	return (
     		<div className="page-container">
     			<PageSection background={'blue'}>
+                    <div>
+                        <h5>Join us</h5>
+                        <img src={this.state.qrUrl}/>
+                    </div>
                     <div>
                         <Link to="/app/summary">
                             <Button type="submit" name="button" class="green" label="Start" />
