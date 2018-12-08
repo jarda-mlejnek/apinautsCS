@@ -44,9 +44,9 @@ export default class OtherContainer extends Component {
 
       const itemsRef = window.firebase.database().ref(CONFIG.FIREBASE_SCHEMAS.ITEMS + "-" + this.state.meetingId) 
 
-      let summary = 0
-      let users = 0
       itemsRef.on('value', (snapshot) => {
+        let summary = 0
+        let users = 0
         let items = snapshot.val()
         for (let item in items) {
           summary += items[item].mdRate === undefined ? 0 : items[item].mdRate
